@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نقره‌تاب | SilverSpark</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); color: #2c3e50; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+        .header { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); padding: 3rem 1rem; text-align: center; border-bottom: 4px solid #c0a050; position: relative; }
+        .marquee-bar { background: #00ff00; /* رنگ فسفری */ color: #000000; /* نوشته مشکی */ padding: 10px 0; overflow: hidden; position: relative; font-weight: bold; font-size: 1.1rem; border-bottom: 2px solid #c0a050; }
+        .marquee-content { display: inline-block; white-space: nowrap; animation: marquee 25s linear infinite; padding-right: 100%; }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .logo-container { margin-bottom: 1rem; }
+        .main-logo { height: 100px; width: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)); }
+        .brand-name { font-size: 3.5rem; font-weight: bold; background: linear-gradient(135deg, #c0a050, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .brand-subtitle { font-size: 1.8rem; color: #bdc3c7; font-weight: 300; margin-bottom: 0.5rem; letter-spacing: 2px; }
+        .brand-tagline { color: #95a5a6; font-size: 1.1rem; margin-top: 0.5rem; }
+        .content-nav { display: flex; justify-content: center; gap: 1rem; margin: 2rem auto; max-width: 800px; padding: 0 1rem; flex-wrap: wrap; }
+        .nav-btn { background: white; border: 2px solid #c0a050; padding: 12px 24px; border-radius: 25px; cursor: pointer; transition: all 0.3s ease; font-weight: 500; }
+        .nav-btn.active { background: #c0a050; color: white; }
+        .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(192, 160, 80, 0.3); }
+        .content-section { display: none; max-width: 1200px; margin: 0 auto; padding: 0 1rem; flex: 1; }
+        .content-section.active { display: block; }
+        .section-title { text-align: center; margin-bottom: 2rem; color: #2c3e50; font-size: 2rem; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .product-card { background: white; border-radius: 15px; padding: 1.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease; border-right: 4px solid #c0a050; }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-image { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem; }
+        .product-name { font-size: 1.3rem; color: #2c3e50; margin-bottom: 0.5rem; }
+        .product-weight { color: #7f8c8d; margin-bottom: 1rem; }
+        .product-price { font-size: 1.5rem; font-weight: bold; color: #e67e22; margin-bottom: 1.5rem; }
+        .quantity-controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem; }
+        .quantity-btn { width: 35px; height: 35px; border: 1px solid #c0a050; background: white; border-radius: 50%; cursor: pointer; font-size: 1.2rem; }
+        .quantity-display { font-size: 1.2rem; font-weight: bold; min-width: 30px; text-align: center; }
+        .add-to-cart { background: linear-gradient(135deg, #c0a050, #b8941f); color: white; border: none; padding: 12px 24px; border-radius: 25px; cursor: pointer; width: 100%; font-size: 1rem; transition: all 0.3s ease; margin-bottom: 0.5rem; }
+        .add-to-cart:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(192, 160, 80, 0.4); }
+        .contact-btn { background: linear-gradient(135deg, #3498db, #2980b9); color: white; border: none; padding: 12px 24px; border-radius: 25px; cursor: pointer; width: 100%; font-size: 1rem; transition: all 0.3s ease; }
+        .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4); }
+        .story-section { text-align: center; padding: 3rem 1rem; }
+        .story-image { width: 100%; max-width: 500px; height: 300px; object-fit: cover; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .read-story-btn { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; border: none; padding: 15px 30px; border-radius: 25px; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
+        .read-story-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4); }
+        .admin-panel { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #2c3e50; color: white; padding: 2rem; border-radius: 15px; border: 3px solid #c0a050; z-index: 3000; display: none; text-align: center; max-width: 500px; width: 90%; }
+        .admin-toggle { position: fixed; top: 60px; left: 10px; background: #e74c3c; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; z-index: 1000; }
+        .admin-btn { background: #c0a050; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .price-input { width: 200px; padding: 10px; margin: 10px; border: 2px solid #c0a050; border-radius: 10px; background: #34495e; color: white; font-size: 1.1rem; text-align: center; }
+        .text-input { width: 100%; padding: 10px; margin: 10px 0; border: 2px solid #c0a050; border-radius: 10px; background: #34495e; color: white; font-size: 1rem; text-align: center; }
+        .cart-section { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 2000; }
+        .cart-content { background: white; padding: 2rem; border-radius: 15px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; color: #2c3e50; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee; }
+        .cart-total { text-align: center; font-size: 1.2rem; margin: 1rem 0; padding: 1rem; background: #f8f9fa; border-radius: 10px; }
+        .cart-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .cart-toggle { position: fixed; top: 10px; right: 10px; background: #27ae60; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; z-index: 1000; }
+        .payment-section { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 4000; color: white; padding: 1rem; }
+        .payment-content { background: #2c3e50; max-width: 600px; width: 95%; padding: 2rem; border-radius: 15px; border: 3px solid #c0a050; max-height: 90vh; overflow-y: auto; }
+        .invoice-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #34495e; }
+        .customer-form { background: #34495e; padding: 1.5rem; border-radius: 10px; margin: 1rem 0; }
+        .form-group { margin-bottom: 1rem; }
+        .form-input { width: 100%; padding: 12px; border: 2px solid #c0a050; border-radius: 8px; background: #2c3e50; color: white; font-size: 1rem; }
+        .form-input::placeholder { color: #95a5a6; }
+        .warning-box { background: #e74c3c; padding: 1rem; border-radius: 10px; margin: 1rem 0; text-align: center; font-weight: bold; border: 2px solid #c0392b; }
+        .footer { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 2rem 1rem; text-align: center; margin-top: auto; border-top: 4px solid #c0a050; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .social-icon { width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; transition: all 0.3s ease; text-decoration: none; color: white; }
+        .social-icon:hover { background: #c0a050; transform: translateY(-3px); }
+        .contact-info { margin-bottom: 1.5rem; }
+        .contact-item { margin: 0.5rem 0; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .copyright { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1rem; }
+        @media (max-width: 768px) {
+            .brand-name { font-size: 2.5rem; }
+            .brand-subtitle { font-size: 1.3rem; }
+            .content-nav { flex-direction: column; align-items: center; }
+            .nav-btn { width: 200px; }
+            .products-grid { grid-template-columns: 1fr; }
+            .social-links { gap: 1rem; }
+            .social-icon { width: 40px; height: 40px; font-size: 1.1rem; }
+            .admin-toggle { top: 50px; }
+            .cart-actions { flex-direction: column; }
+            .marquee-bar { font-size: 0.9rem; padding: 8px 0; }
+        }
+    </style>
+</head>
+<body>
+    <button class="cart-toggle" onclick="toggleCart()">🛒 <span id="cartCount">۰</span></button>
+    <button class="admin-toggle" onclick="showAdmin()">⚙️ مدیریت</button>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="https://i.imgur.com/LVGuf4m.jpeg" alt="نقره‌تاب" class="main-logo">
+        </div>
+        <div class="brand-name">نقره‌تاب</div>
+        <div class="brand-subtitle">SilverSpark</div>
+        <div class="brand-tagline">نقره خام با عیار تضمینی</div>
+    </header>
+    
+    <div class="marquee-bar">
+        <div class="marquee-content" id="marqueeText">🎯 بهترین قیمت نقره در بازار - تضمین کیفیت و اصالت - تحویل فوری در تهران 🎯</div>
+    </div>
+    
+    <nav class="content-nav">
+        <button class="nav-btn active" onclick="showSection('investment')">💰 سرمایه‌گذاری</button>
+        <button class="nav-btn" onclick="showSection('gift')">🎁 پک‌های کادویی</button>
+        <button class="nav-btn" onclick="showSection('story')">📖 داستان نقره</button>
+    </nav>
+    
+    <div class="admin-panel" id="adminPanel">
+        <h3>🔧 پنل مدیریت نقره‌تاب</h3>
+        
+        <div style="margin: 1rem 0;">
+            <label>قیمت هر گرم نقره (تومان):</label>
+            <br>
+            <input type="number" id="adminPriceInput" class="price-input" placeholder="مثلاً 30000">
+        </div>
+        
+        <div style="margin: 1rem 0;">
+            <label>متن نوار متحرک:</label>
+            <br>
+            <input type="text" id="marqueeInput" class="text-input" placeholder="متن مورد نظر برای نوار متحرک">
+        </div>
+        
+        <button class="admin-btn" onclick="saveSilverPrice()">💾 ذخیره قیمت</button>
+        <button class="admin-btn" onclick="saveMarqueeText()">📝 ذخیره متن متحرک</button>
+        <button class="admin-btn" onclick="hideAdmin()" style="background: #e74c3c;">❌ بستن</button>
+        
+        <div class="last-update" id="lastUpdate" style="color: #95a5a6; font-size: 0.9rem; margin-top: 1rem;">آخرین بروزرسانی: هرگز</div>
+    </div>
+    
+    <div class="cart-section" id="cartSection">
+        <div class="cart-content">
+            <h3>🛒 سبد خرید شما</h3>
+            <div class="cart-items" id="cartItems"></div>
+            <div class="cart-total"><strong>جمع کل: <span id="cartTotal">۰</span> تومان</strong></div>
+            <div class="cart-actions">
+                <button class="contact-btn" onclick="showPaymentPage()">💳 پرداخت</button>
+                <button class="admin-btn" onclick="closeCart()" style="background: #e74c3c;">بستن</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="payment-section" id="paymentPage">
+        <div class="payment-content">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2>🧾 فاکتور خرید نقره</h2>
+                <div id="invoiceNumber" style="color: #95a5a6; font-size: 0.9rem;"></div>
+            </div>
+            
+            <div class="warning-box">
+                ⚠️ به دلیل نوسانات قیمت، فاکتور تا یک ساعت اعتبار دارد
+            </div>
+            
+            <div class="customer-form">
+                <h4>📝 اطلاعات مشتری</h4>
+                <div class="form-group">
+                    <input type="text" id="customerName" class="form-input" placeholder="نام و نام خانوادگی">
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="customerPhone" class="form-input" placeholder="شماره تماس">
+                </div>
+                <button class="contact-btn" onclick="validateCustomerInfo()" style="width: 100%;">تأیید اطلاعات و ادامه</button>
+            </div>
+            
+            <div id="invoiceDetails" style="margin-bottom: 1.5rem; display: none;"></div>
+            
+            <div class="cart-actions">
+                <button class="add-to-cart" onclick="sendToWhatsApp()" id="whatsappBtn" style="display: none; background: #25D366;">📱 ارسال به واتساپ</button>
+                <button class="contact-btn" onclick="closePayment()">بستن</button>
+            </div>
+        </div>
+    </div>
+    
+    <section id="investment" class="content-section active">
+        <h2 class="section-title">سبدهای سرمایه‌گذاری نقره</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/3498db/ffffff?text=سبد+آشنایی" alt="سبد آشنایی" class="product-image">
+                <h3 class="product-name">سبد آشنایی</h3>
+                <div class="product-weight">۵ گرم</div>
+                <div class="product-price" data-price="basket1">۱۵۰,۰۰۰ تومان</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('basket1', -1)">-</button>
+                    <span class="quantity-display" id="quantity-basket1">1</span>
+                    <button class="quantity-btn" onclick="updateQuantity('basket1', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('basket1', 'سبد آشنایی (۵ گرم)', 150000)">افزودن به سبد خرید</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/e74c3c/ffffff?text=سبد+وزین" alt="سبد وزین" class="product-image">
+                <h3 class="product-name">سبد وزین</h3>
+                <div class="product-weight">۲۰ گرم</div>
+                <div class="product-price" data-price="basket2">۶۰۰,۰۰۰ تومان</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('basket2', -1)">-</button>
+                    <span class="quantity-display" id="quantity-basket2">1</span>
+                    <button class="quantity-btn" onclick="updateQuantity('basket2', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('basket2', 'سبد وزین (۲۰ گرم)', 600000)">افزودن به سبد خرید</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/2ecc71/ffffff?text=سبد+ویژه" alt="سبد ویژه" class="product-image">
+                <h3 class="product-name">سبد ویژه</h3>
+                <div class="product-weight">۵۰ گرم</div>
+                <div class="product-price" data-price="basket3">۱,۵۰۰,۰۰۰ تومان</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('basket3', -1)">-</button>
+                    <span class="quantity-display" id="quantity-basket3">1</span>
+                    <button class="quantity-btn" onclick="updateQuantity('basket3', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('basket3', 'سبد ویژه (۵۰ گرم)', 1500000)">افزودن به سبد خرید</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/f39c12/ffffff?text=سبد+حرفه‌ای" alt="سبد حرفه‌ای" class="product-image">
+                <h3 class="product-name">سبد حرفه‌ای</h3>
+                <div class="product-weight">۱۰۰+ گرم</div>
+                <div class="product-price">تماس بگیرید</div>
+                <button class="contact-btn" onclick="contactForCustomOrder('سبد حرفه‌ای (۱۰۰+ گرم)')">درخواست مشاوره</button>
+            </div>
+        </div>
+    </section>
+    
+    <section id="gift" class="content-section">
+        <h2 class="section-title">پک‌های کادویی ویژه</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/9b59b6/ffffff?text=پک+کادویی+۲۰+گرم" alt="پک کادویی ۲۰ گرم" class="product-image">
+                <h3 class="product-name">پک هدیه نقره</h3>
+                <div class="product-weight">۲۰ گرم</div>
+                <div class="product-price" data-price="gift1">۷۵۰,۰۰۰ تومان</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('gift1', -1)">-</button>
+                    <span class="quantity-display" id="quantity-gift1">1</span>
+                    <button class="quantity-btn" onclick="updateQuantity('gift1', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('gift1', 'پک هدیه ۲۰ گرم', 750000)">افزودن به سبد خرید</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/34495e/ffffff?text=پک+کادویی+۵۰+گرم" alt="پک کادویی ۵۰ گرم" class="product-image">
+                <h3 class="product-name">پک هدیه ویژه</h3>
+                <div class="product-weight">۵۰ گرم</div>
+                <div class="product-price" data-price="gift2">۱,۸۰۰,۰۰۰ تومان</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('gift2', -1)">-</button>
+                    <span class="quantity-display" id="quantity-gift2">1</span>
+                    <button class="quantity-btn" onclick="updateQuantity('gift2', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('gift2', 'پک هدیه ۵۰ گرم', 1800000)">افزودن به سبد خرید</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/e67e22/ffffff?text=پک+کادویی+۱۰۰+گرم" alt="پک کادویی ۱۰۰ گرم" class="product-image">
+                <h3 class="product-name">پک هدیه لوکس</h3>
+                <div class="product-weight">۱۰۰ گرم</div>
+                <div class="product-price" data-price="gift3">۳,۵۰۰,۰۰۰ تومان</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('gift3', -1)">-</button>
+                    <span class="quantity-display" id="quantity-gift3">1</span>
+                    <button class="quantity-btn" onclick="updateQuantity('gift3', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('gift3', 'پک هدیه ۱۰۰ گرم', 3500000)">افزودن به سبد خرید</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/95a5a6/ffffff?text=پک+سفارشی" alt="پک سفارشی" class="product-image">
+                <h3 class="product-name">پک هدیه سفارشی</h3>
+                <div class="product-weight">سفارشی</div>
+                <div class="product-price">تماس بگیرید</div>
+                <button class="contact-btn" onclick="contactForCustomOrder('پک هدیه سفارشی')">درخواست هماهنگی</button>
+            </div>
+        </div>
+    </section>
+    
+    <section id="story" class="content-section">
+        <div class="story-section">
+            <img src="https://via.placeholder.com/500x300/2c3e50/ffffff?text=داستان+نقره" alt="داستان نقره" class="story-image">
+            <h2 class="section-title">سفر تاریخی نقره</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #7f8c8d; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+                کشف اسرار فلزی که هزاران سال همراه تمدن بشری بوده است. 
+                از اولین معادن در Anatolia تا مدرن‌ترین کاربردها در صنعت و فناوری. 
+                نقره نه تنها یک فلز گرانبها، که بخشی از تاریخ انسانیت است.
+            </p>
+            <a href="http://silverspark.blogfa.com/page/silver-story" class="read-story-btn" target="_blank">📚 خواندن داستان کامل نقره</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://wa.me/989116546234" class="social-icon" target="_blank" title="واتساپ">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://t.me/silversparkgroup" class="social-icon" target="_blank" title="تلگرام">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="https://instagram.com/silverspark.ir" class="social-icon" target="_blank" title="اینستاگرام">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:SilverSpark.ir@gmail.com" class="social-icon" target="_blank" title="ایمیل">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="tel:+989116546234" class="social-icon" target="_blank" title="تماس">
+                <i class="fas fa-phone"></i>
+            </a>
+        </div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>SilverSpark.ir@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>۰۹۱۱۶۵۴۶۲۳۴</span>
+            </div>
+        </div>
+        <div class="copyright">
+            © ۲۰۲۴ کلیه حقوق برای <strong>SilverSpark</strong> محفوظ است
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+        const WHATSAPP_NUMBER = "989116546234";
+        let currentPrices = {
+            basket1: 150000, basket2: 600000, basket3: 1500000,
+            gift1: 750000, gift2: 1800000, gift3: 3500000
+        };
+        let customerInfo = { name: '', phone: '' };
+        let marqueeText = "🎯 بهترین قیمت نقره در بازار - تضمین کیفیت و اصالت - تحویل فوری در تهران 🎯";
+
+        // تابع برای چک کردن پسوورد در بک‌اند
+        async function checkAdminPassword(password) {
+            try {
+                const response = await fetch('https://your-backend-url.com/check-password', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ password: password })
+                });
+                const result = await response.json();
+                return result.success;
+            } catch (error) {
+                console.error('Error checking password:', error);
+                return false;
+            }
+        }
+
+        function showSection(sectionName) {
+            document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(sectionName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function updateQuantity(productId, change) {
+            const quantityElement = document.getElementById('quantity-' + productId);
+            let quantity = parseInt(quantityElement.textContent);
+            quantity += change;
+            if (quantity < 1) quantity = 1;
+            quantityElement.textContent = quantity;
+        }
+        
+        function addToCart(productId, productName, basePrice) {
+            const quantity = parseInt(document.getElementById('quantity-' + productId).textContent);
+            const currentPrice = currentPrices[productId] || basePrice;
+            const totalPrice = currentPrice * quantity;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+                existingItem.price = currentPrice;
+                existingItem.total = existingItem.quantity * currentPrice;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    price: currentPrice,
+                    quantity: quantity,
+                    total: totalPrice
+                });
+            }
+            
+            updateCartDisplay();
+            document.getElementById('quantity-' + productId).textContent = '1';
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartCount = document.getElementById('cartCount');
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+            let itemCount = 0;
+            
+            cart.forEach(item => {
+                item.total = item.price * item.quantity;
+                total += item.total;
+                itemCount += item.quantity;
+                
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.name}</span>
+                        <div>
+                            <button class="quantity-btn" onclick="updateCartItemQuantity('${item.id}', -1)">-</button>
+                            <span class="quantity-display">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateCartItemQuantity('${item.id}', 1)">+</button>
+                            <span>${item.total.toLocaleString()} تومان</span>
+                            <button class="quantity-btn" onclick="removeFromCart('${item.id}')" style="background: #e74c3c; color: white;">❌</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartTotal.textContent = total.toLocaleString();
+            cartCount.textContent = itemCount;
+        }
+
+        function updateCartItemQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity < 1) {
+                    removeFromCart(productId);
+                } else {
+                    item.total = item.price * item.quantity;
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartDisplay();
+        }
+
+        function toggleCart() {
+            const cartSection = document.getElementById('cartSection');
+            cartSection.style.display = cartSection.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function closeCart() {
+            document.getElementById('cartSection').style.display = 'none';
+        }
+
+        function showPaymentPage() {
+            if (cart.length === 0) {
+                alert('سبد خرید شما خالی است!');
+                return;
+            }
+            
+            const paymentPage = document.getElementById('paymentPage');
+            const invoiceNumber = document.getElementById('invoiceNumber');
+            
+            const now = new Date();
+            const invoiceNum = `INV-${now.getFullYear()}${(now.getMonth()+1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}-${Math.floor(Math.random() * 1000).toString().padStart(3, '0')}`;
+            invoiceNumber.textContent = `شماره فاکتور: ${invoiceNum}`;
+            
+            paymentPage.style.display = 'flex';
+        }
+
+        function validateCustomerInfo() {
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            
+            if (!name) {
+                alert('لطفاً نام و نام خانوادگی خود را وارد کنید.');
+                return;
+            }
+            
+            if (!phone || phone.length < 10) {
+                alert('لطفاً شماره تماس معتبر وارد کنید.');
+                return;
+            }
+            
+            customerInfo = { name, phone };
+            document.getElementById('invoiceDetails').style.display = 'block';
+            document.getElementById('whatsappBtn').style.display = 'block';
+            showInvoiceDetails();
+        }
+
+        function showInvoiceDetails() {
+            const invoiceDetails = document.getElementById('invoiceDetails');
+            let total = 0;
+            
+            let invoiceHTML = '<h4>📋 اقلام سفارش:</h4>';
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                invoiceHTML += `
+                    <div class="invoice-item">
+                        <span>${item.name} (${item.quantity} عدد)</span>
+                        <span>${itemTotal.toLocaleString()} تومان</span>
+                    </div>
+                `;
+            });
+            
+            invoiceHTML += `
+                <div class="invoice-item" style="font-weight: bold; border-top: 2px solid #c0a050; margin-top: 10px; padding-top: 10px;">
+                    <span>جمع کل:</span>
+                    <span>${total.toLocaleString()} تومان</span>
+                </div>
+            `;
+            
+            invoiceDetails.innerHTML = invoiceHTML;
+        }
+
+        function closePayment() {
+            document.getElementById('paymentPage').style.display = 'none';
+            document.getElementById('invoiceDetails').style.display = 'none';
+            document.getElementById('whatsappBtn').style.display = 'none';
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerPhone').value = '';
+        }
+
+        function sendToWhatsApp() {
+            if (!customerInfo.name || !customerInfo.phone) {
+                alert('لطفاً ابتدا اطلاعات مشتری را تکمیل کنید.');
+                return;
+            }
+
+            const invoiceNumber = document.getElementById('invoiceNumber').textContent;
+            const now = new Date().toLocaleDateString('fa-IR');
+            let totalAmount = 0;
+
+            let message = `📋 *فاکتور خرید نقره*\n\n`;
+            message += `👤 *مشتری:* ${customerInfo.name}\n`;
+            message += `📞 *شماره تماس:* ${customerInfo.phone}\n`;
+            message += `📄 *شماره فاکتور:* ${invoiceNumber}\n`;
+            message += `📅 *تاریخ:* ${now}\n\n`;
+            message += `🛒 *لیست اقلام:*\n`;
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                totalAmount += itemTotal;
+                message += `${index + 1}. ${item.name} (${item.quantity} عدد) - ${itemTotal.toLocaleString()} تومان\n`;
+            });
+
+            message += `\n💰 *جمع کل:* ${totalAmount.toLocaleString()} تومان\n\n`;
+            message += `⚠️ *توجه:* فاکتور تا یک ساعت اعتبار دارد\n\n`;
+            message += `⚡ *نقره‌تاب | SilverSpark*`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+            
+            alert('فاکتور با موفقیت به واتساپ ارسال شد. لطفاً پیام را تأیید و ارسال کنید.');
+        }
+
+        async function showAdmin() {
+            const password = prompt('رمز مدیریت را وارد کنید:');
+            if (password) {
+                const isValid = await checkAdminPassword(password);
+                if (isValid) {
+                    document.getElementById('adminPanel').style.display = 'block';
+                    loadCurrentSettings();
+                } else {
+                    alert('رمز اشتباه است!');
+                }
+            }
+        }
+
+        function hideAdmin() {
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+
+        function saveSilverPrice() {
+            const pricePerGram = document.getElementById('adminPriceInput').value;
+            
+            if (!pricePerGram || pricePerGram < 1000) {
+                alert('لطفاً قیمت معتبر وارد کنید!');
+                return;
+            }
+
+            const PRICE_FACTORS = {
+                investment: 1.0,
+                gift: {
+                    gift1: 1.10,  // 10% افزایش برای پک ۲۰ گرمی
+                    gift2: 1.07,  // 7% افزایش برای پک ۵۰ گرمی
+                    gift3: 1.05   // 5% افزایش برای پک ۱۰۰ گرمی
+                }
+            };
+
+            const calculatedPrices = {
+                // سرمایه‌گذاری (بدون افزایش)
+                basket1: Math.round(pricePerGram * 5 * PRICE_FACTORS.investment),
+                basket2: Math.round(pricePerGram * 20 * PRICE_FACTORS.investment),
+                basket3: Math.round(pricePerGram * 50 * PRICE_FACTORS.investment),
+                
+                // پک کادویی (با افزایش درصدی)
+                gift1: Math.round(pricePerGram * 20 * PRICE_FACTORS.gift.gift1),
+                gift2: Math.round(pricePerGram * 50 * PRICE_FACTORS.gift.gift2),
+                gift3: Math.round(pricePerGram * 100 * PRICE_FACTORS.gift.gift3)
+            };
+
+            currentPrices = calculatedPrices;
+            
+            document.querySelectorAll('[data-price]').forEach(element => {
+                const priceKey = element.getAttribute('data-price');
+                if (calculatedPrices[priceKey]) {
+                    element.textContent = calculatedPrices[priceKey].toLocaleString() + ' تومان';
+                }
+            });
+
+            cart.forEach(item => {
+                if (calculatedPrices[item.id]) {
+                    item.price = calculatedPrices[item.id];
+                    item.total = item.price * item.quantity;
+                }
+            });
+            updateCartDisplay();
+
+            const now = new Date().toLocaleString('fa-IR');
+            document.getElementById('lastUpdate').textContent = `آخرین بروزرسانی: ${now}`;
+            
+            alert(`✅ قیمت هر گرم بروزرسانی شد!\n\n💰 قیمت جدید: ${parseInt(pricePerGram).toLocaleString()} تومان\n\n📦 افزایش قیمت پک‌های کادویی:\n• پک ۲۰ گرمی: ۱۰٪\n• پک ۵۰ گرمی: ۷٪\n• پک ۱۰۰ گرمی: ۵٪`);
+        }
+
+        function saveMarqueeText() {
+            const newText = document.getElementById('marqueeInput').value.trim();
+            if (!newText) {
+                alert('لطفاً متن مورد نظر را وارد کنید.');
+                return;
+            }
+
+            marqueeText = newText;
+            document.getElementById('marqueeText').textContent = newText;
+            
+            const now = new Date().toLocaleString('fa-IR');
+            document.getElementById('lastUpdate').textContent = `آخرین بروزرسانی: ${now}`;
+            
+            alert('✅ متن نوار متحرک با موفقیت بروزرسانی شد!');
+        }
+
+        function loadCurrentSettings() {
+            // بارگذاری تنظیمات فعلی
+            document.getElementById('marqueeInput').value = marqueeText;
+        }
+
+        function contactForCustomOrder(productName) {
+            alert(`📞 برای دریافت مشاوره و قیمت ${productName} با شماره زیر تماس بگیرید:\n\n۰۹۱۱۶۵۴۶۲۳۴\n\nیا از طریق واتساپ پیام دهید.`);
+        }
+
+        // بارگذاری اولیه
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('marqueeText').textContent = marqueeText;
+        });
+    </script>
+</body>
+</html>
