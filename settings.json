@@ -1,0 +1,51 @@
+{
+    "siteName": "شبکه تحلیلگر سیاسی - محمد ندیمی",
+    "siteTitle": "شبکه تحلیلگر سیاسی",
+    "siteSubtitle": "MOHAMMAD NADIMI",
+    "logoUrl": "",
+    "adminCode": "",
+    "socialLinks": {
+        "telegram": {
+            "url": "",
+            "iconUrl": "",
+            "iconFallback": "✈"
+        },
+        "youtube": {
+            "url": "",
+            "iconUrl": "",
+            "iconFallback": "▶"
+        },
+        "twitter": {
+            "url": "",
+            "iconUrl": "",
+            "iconFallback": "𝕏"
+        },
+        "instagram": {
+            "url": "",
+            "iconUrl": "",
+            "iconFallback": "📷"
+        }
+    },
+    "support": {
+        "cardNumber": "",
+        "cardHolder": "محمد ندیمی",
+        "shaba": "",
+        "usdt": "",
+        "paypal": ""
+    },
+    "contact": {
+        "email": "",
+        "phone": ""
+    },
+    "partners": [],
+    "breakingNews": [
+        "خبر فوری اول",
+        "خبر فوری دوم",
+        "خبر فوری سوم"
+    ],
+    "display": {
+        "videosCount": 3,
+        "newsCount": 3,
+        "podcastsCount": 2
+    }
+}
