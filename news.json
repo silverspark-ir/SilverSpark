@@ -11,17 +11,6 @@
     "isBreaking": true
   },
   {
-    "id": "news1804202600001",
-    "imageUrl": "https://example.com/image1.jpg",
-    "videoUrl": "",
-    "title": "عنوان خبر اول",
-    "summary": "خلاصه خبر اول",
-    "content": "متن کامل خبر اول",
-    "category": "سیاسی",
-    "date": "2026-08-31",
-    "isBreaking": true
-  },
-  {
     "id": "news1804202600002",
     "imageUrl": "https://example.com/image2.jpg",
     "videoUrl": "",
