@@ -1,0 +1,35 @@
+[
+    {
+        "id": "news1804202600001",
+        "imageUrl": "https://example.com/image1.jpg",
+        "videoUrl": "",
+        "title": "عنوان خبر اول",
+        "summary": "خلاصه خبر اول",
+        "content": "متن کامل خبر اول",
+        "category": "سیاسی",
+        "date": "2026-08-31",
+        "isBreaking": true
+    },
+    {
+        "id": "news1804202600002",
+        "imageUrl": "https://example.com/image2.jpg",
+        "videoUrl": "",
+        "title": "عنوان خبر دوم",
+        "summary": "خلاصه خبر دوم",
+        "content": "متن کامل خبر دوم",
+        "category": "اقتصادی",
+        "date": "2026-08-30",
+        "isBreaking": false
+    },
+    {
+        "id": "news1804202600003",
+        "imageUrl": "https://example.com/image3.jpg",
+        "videoUrl": "",
+        "title": "عنوان خبر سوم",
+        "summary": "خلاصه خبر سوم",
+        "content": "متن کامل خبر سوم",
+        "category": "بین‌الملل",
+        "date": "2026-08-29",
+        "isBreaking": false
+    }
+]
