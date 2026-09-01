@@ -1,0 +1,12 @@
+[
+    {
+        "id": "pt1",
+        "name": "عنوان همکار اول",
+        "url": "https://example.com"
+    },
+    {
+        "id": "pt2",
+        "name": "عنوان همکار دوم",
+        "url": "https://example.org"
+    }
+]
