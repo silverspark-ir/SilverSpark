@@ -8,14 +8,6 @@
     "date": "2026-09-01"
   },
   {
-    "id": "podcast1804202600001",
-    "audioUrl": "https://example.com/podcast1.mp3",
-    "title": "عنوان پادکست اول",
-    "description": "توضیحات پادکست اول",
-    "imageUrl": "",
-    "date": "2026-08-31"
-  },
-  {
     "id": "podcast1804202600002",
     "audioUrl": "https://example.com/podcast2.mp3",
     "title": "عنوان پادکست دوم",
