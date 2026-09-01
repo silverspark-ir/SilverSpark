@@ -2,7 +2,7 @@
     {
         "id": "video1804202600001",
         "videoUrl": "https://www.youtube.com/watch?v=VIDEO_ID_1",
-        "thumbnailUrl": "",
+        "thumbnailUrl": "https://example.com/thumbnail1.jpg",
         "title": "عنوان ویدیوی اول",
         "description": "توضیحات ویدیوی اول",
         "date": "2026-08-31"
@@ -18,7 +18,7 @@
     {
         "id": "video1804202600003",
         "videoUrl": "https://example.com/video.mp4",
-        "thumbnailUrl": "",
+        "thumbnailUrl": "https://example.com/thumbnail3.jpg",
         "title": "عنوان ویدیوی سوم",
         "description": "توضیحات ویدیوی سوم",
         "date": "2026-08-29"
