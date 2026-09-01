@@ -6,13 +6,5 @@
     "description": "حنله به دیمونا",
     "imageUrl": "",
     "date": "2026-09-01"
-  },
-  {
-    "id": "podcast1804202600002",
-    "audioUrl": "https://example.com/podcast2.mp3",
-    "title": "عنوان پادکست دوم",
-    "description": "توضیحات پادکست دوم",
-    "imageUrl": "",
-    "date": "2026-08-30"
   }
 ]
