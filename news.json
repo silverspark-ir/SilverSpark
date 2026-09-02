@@ -20,16 +20,5 @@
     "category": "اقتصادی",
     "date": "2026-08-30",
     "isBreaking": false
-  },
-  {
-    "id": "news1804202600003",
-    "imageUrl": "https://example.com/image3.jpg",
-    "videoUrl": "",
-    "title": "عنوان خبر سوم",
-    "summary": "خلاصه خبر سوم",
-    "content": "متن کامل خبر سوم",
-    "category": "بین‌الملل",
-    "date": "2026-08-29",
-    "isBreaking": false
   }
 ]
