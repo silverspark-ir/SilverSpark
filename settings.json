@@ -37,7 +37,13 @@
     "email": "Nadimi@gmail.com",
     "phone": ""
   },
-  "partners": [],
+  "partners": [
+    {
+      "id": "pt1788312861104",
+      "name": "اخبار سوریه ـ تلکرام",
+      "url": "https://t.me/syriankhabar"
+    }
+  ],
   "breakingNews": [
     "جنگ  بزرگ قرن ، ایران و آمریکا",
     "خبر فوری دوم",
