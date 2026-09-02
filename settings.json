@@ -6,7 +6,7 @@
   "adminCode": "1234554321",
   "socialLinks": {
     "telegram": {
-      "url": "",
+      "url": "https://t.me/tahlilgar_siasi",
       "iconUrl": "",
       "iconFallback": "✈"
     },
@@ -21,17 +21,17 @@
       "iconFallback": "𝕏"
     },
     "instagram": {
-      "url": "",
+      "url": "http://Instagram.com/tahlilgar_siasi",
       "iconUrl": "",
       "iconFallback": "📷"
     }
   },
   "support": {
-    "cardNumber": "",
+    "cardNumber": "6037991796491698",
     "cardHolder": "محمد ندیمی",
-    "shaba": "",
+    "shaba": "ir840170000000114195667000",
     "usdt": "",
-    "paypal": ""
+    "paypal": "https://paypal.me/tahlilgar"
   },
   "contact": {
     "email": "",
